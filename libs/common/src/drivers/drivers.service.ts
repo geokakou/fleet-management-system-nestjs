@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { DriversRepository } from './drivers.repository';
 import { CreateDriverDTO } from './dto/drivers.dto';
 import { Driver } from './schemas/drivers.schema';
@@ -13,5 +13,13 @@ export class DriversService {
 
   async createDriver(driver: CreateDriverDTO): Promise<Driver> {
     return this.driversRepository.create(driver);
+  }
+
+  async findDriver(driverId: string): Promise<Driver> {
+    const driver = await this.driversRepository.findOne({ driverId });
+    if (!driver) {
+      throw new NotFoundException(`Driver with ID ${driverId} not found`);
+    }
+    return driver;
   }
 }

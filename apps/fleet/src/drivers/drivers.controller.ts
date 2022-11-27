@@ -1,5 +1,13 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { DriversService, CreateDriverDTO, Driver } from '@app/common/drivers';
+import { NotFoundError } from 'rxjs';
 
 @Controller('drivers')
 export class DriversController {
@@ -13,5 +21,10 @@ export class DriversController {
   @Post()
   async createDriver(@Body() driver: CreateDriverDTO): Promise<Driver> {
     return this.driversService.createDriver(driver);
+  }
+
+  @Get('id/:driverId')
+  async findDriver(@Param('driverId') driverId: string): Promise<Driver> {
+    return this.driversService.findDriver(driverId);
   }
 }

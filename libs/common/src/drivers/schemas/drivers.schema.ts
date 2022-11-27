@@ -6,6 +6,9 @@ export type DriverDocument = Driver & Document;
 @Schema()
 export class Driver {
   @Prop()
+  driverId: string;
+
+  @Prop()
   firstName: string;
 
   @Prop()

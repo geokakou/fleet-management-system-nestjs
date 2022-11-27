@@ -3,14 +3,13 @@ import { HeartbeatsController } from './heartbeats.controller';
 import { HeartbeatsService } from './heartbeats.service';
 import * as Joi from 'joi';
 import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from '@app/common/database/database.module';
+import { DatabaseModule } from '@app/common/database/mongo/database.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DriversService } from '@app/common/drivers/drivers.service';
-import { DriversRepository } from '@app/common/drivers/drivers.repository';
-import {
-  Driver,
-  DriverSchema,
-} from '@app/common/drivers/schemas/drivers.schema';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TripsService } from '@app/common/trips/trips.service';
+import { TripsRepository } from '@app/common/trips/trips.repository';
+import { Trip, TripSchema } from '@app/common/trips';
+import { DriversRepository, DriversService } from '@app/common';
 
 @Module({
   imports: [
@@ -23,9 +22,10 @@ import {
       envFilePath: './apps/heartbeats/.env',
     }),
     DatabaseModule,
-    MongooseModule.forFeature([{ name: Driver.name, schema: DriverSchema }]),
+    MongooseModule.forFeature([{ name: Trip.name, schema: TripSchema }]),
+    ScheduleModule.forRoot(),
   ],
   controllers: [HeartbeatsController],
-  providers: [HeartbeatsService, DriversService, DriversRepository],
+  providers: [HeartbeatsService, TripsRepository],
 })
 export class HeartbeatsModule {}

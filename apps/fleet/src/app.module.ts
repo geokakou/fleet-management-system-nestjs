@@ -6,11 +6,13 @@ import { CarsModule } from './cars/cars.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from 'libs/common/src';
 import { DriversModule } from './drivers/drivers.module';
+import { TripsModule } from './trips/trips.module';
 
 @Module({
   imports: [
     CarsModule,
     DriversModule,
+    TripsModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
