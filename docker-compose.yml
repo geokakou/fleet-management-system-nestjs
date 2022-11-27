@@ -15,6 +15,22 @@ services:
     ports:
       - '3000:3000'
 
+  heartbeats:
+    build:
+      context: .
+      dockerfile: ./apps/heartbeats/Dockerfile
+      target: development
+    command: npm run start:dev heartbeats
+    env_file:
+      - ./apps/heartbeats/.env
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3001:3001'
+
   mongo:
     image: mongo
     restart: always

@@ -6,8 +6,8 @@ import { CarsService } from './cars.service';
 import { Car, CarSchema } from './schemas/cars.schema';
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: Car.name, schema: CarSchema }]),],
-    providers: [CarsService, CarsRepository],
-    controllers: [CarsController],
+  imports: [MongooseModule.forFeature([{ name: Car.name, schema: CarSchema }])],
+  providers: [CarsService, CarsRepository],
+  controllers: [CarsController],
 })
 export class CarsModule {}

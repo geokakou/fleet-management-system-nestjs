@@ -5,15 +5,15 @@ import { Car } from './schemas/cars.schema';
 
 @Controller('cars')
 export class CarsController {
-    constructor(private readonly carsService: CarsService) {}
+  constructor(private readonly carsService: CarsService) {}
 
-    @Get()
-    async getCars(): Promise<Car[]> {
-        return this.carsService.getCars();
-    }
+  @Get()
+  async getCars(): Promise<Car[]> {
+    return this.carsService.getCars();
+  }
 
-    @Post()
-    async createCar(@Body() car: CreateCarDTO): Promise<Car> {
-        return this.carsService.createCar(car);
-    }
+  @Post()
+  async createCar(@Body() car: CreateCarDTO): Promise<Car> {
+    return this.carsService.createCar(car);
+  }
 }
