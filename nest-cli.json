@@ -35,6 +35,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
+    },
+    "penalty_points": {
+      "type": "application",
+      "root": "apps/penalty_points",
+      "entryFile": "main",
+      "sourceRoot": "apps/penalty_points/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/penalty_points/tsconfig.app.json"
+      }
     }
   }
 }

@@ -6,10 +6,10 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from '@app/common/database/mongo/database.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
-import { TripsService } from '@app/common/trips/trips.service';
 import { TripsRepository } from '@app/common/trips/trips.repository';
 import { Trip, TripSchema } from '@app/common/trips';
-import { DriversRepository, DriversService } from '@app/common';
+import { RmqModule } from '@app/common/rmq/rmq.module';
+import { TRIP_STATUS } from './constants';
 
 @Module({
   imports: [
@@ -23,6 +23,9 @@ import { DriversRepository, DriversService } from '@app/common';
     }),
     DatabaseModule,
     MongooseModule.forFeature([{ name: Trip.name, schema: TripSchema }]),
+    RmqModule.register({
+      name: TRIP_STATUS,
+    }),
     ScheduleModule.forRoot(),
   ],
   controllers: [HeartbeatsController],

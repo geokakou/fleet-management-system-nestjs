@@ -9,6 +9,7 @@ services:
       - ./apps/fleet/.env
     depends_on:
       - mongo
+      - rabbitmq
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -25,11 +26,33 @@ services:
       - ./apps/heartbeats/.env
     depends_on:
       - mongo
+      - rabbitmq
+      - penalty-points
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - '3001:3001'
+
+  penalty-points:
+    build:
+      context: .
+      dockerfile: ./apps/penalty_points/Dockerfile
+      target: development
+    command: npm run start:dev penalty_points
+    env_file:
+      - ./apps/penalty_points/.env
+    depends_on:
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - '5672:5672'
 
   mongo:
     image: mongo

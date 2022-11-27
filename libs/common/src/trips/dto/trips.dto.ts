@@ -11,9 +11,9 @@ export class CreateTripDTO {
 
   @IsBoolean()
   @IsNotEmpty()
-  isActive = true;
+  isActive;
 
   @IsDate()
   @IsNotEmpty()
-  date: Date = now();
+  date: Date;
 }
