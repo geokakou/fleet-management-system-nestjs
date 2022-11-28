@@ -1,5 +1,4 @@
 import { IsString, IsNotEmpty, IsBoolean, IsDate } from 'class-validator';
-import { now } from 'mongoose';
 export class CreateTripDTO {
   @IsString()
   @IsNotEmpty()

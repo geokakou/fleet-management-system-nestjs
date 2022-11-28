@@ -24,4 +24,12 @@ export abstract class EntityRepository<T extends Document> {
       new: true,
     });
   }
+
+  async upsert(filterQuery: FilterQuery<T>, document: Partial<T>) {
+    return this.entityModel.findOneAndUpdate(filterQuery, document, {
+      lean: true,
+      upsert: true,
+      new: true,
+    });
+  }
 }

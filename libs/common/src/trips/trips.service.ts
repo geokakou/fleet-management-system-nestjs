@@ -18,6 +18,8 @@ export class TripsService {
 
   async createTrip(trip: CreateTripDTO): Promise<Trip> {
     const { driverId, carRegNumber } = trip;
+
+    //check if driver and car are exist
     const [driver, car] = await Promise.all([
       this.driversService.findDriver(driverId),
       this.driversService.findDriver(driverId),

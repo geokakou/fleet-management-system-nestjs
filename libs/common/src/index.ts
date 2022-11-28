@@ -4,3 +4,4 @@ export * from './rmq/rmq.service';
 export * from './rmq/rmq.module';
 export * from './drivers';
 export * from './trips';
+export * from './penalty';

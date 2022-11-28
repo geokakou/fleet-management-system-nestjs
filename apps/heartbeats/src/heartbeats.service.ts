@@ -12,12 +12,7 @@ export class HeartbeatsService {
     @Inject(TRIP_STATUS) private penaltyPointsClient: ClientProxy,
   ) {}
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
-  @Cron(CronExpression.EVERY_10_SECONDS)
-  // */10 * * * * *
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async generate() {
     const activeTrips = await this.tripsRepository.find({ isActive: true });
     console.log(`There is ${activeTrips.length} active trip(s)`);

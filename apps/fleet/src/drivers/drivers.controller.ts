@@ -1,13 +1,5 @@
-import {
-  Body,
-  Controller,
-  Get,
-  NotFoundException,
-  Param,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { DriversService, CreateDriverDTO, Driver } from '@app/common/drivers';
-import { NotFoundError } from 'rxjs';
 
 @Controller('drivers')
 export class DriversController {

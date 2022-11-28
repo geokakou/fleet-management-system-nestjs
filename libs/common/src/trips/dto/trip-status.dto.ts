@@ -1,6 +1,6 @@
 export interface TripStatus {
-    driverId: string;
-    carRegNumber: string;
-    speed: number;
-    datetime: string;
+  driverId: string;
+  carRegNumber: string;
+  speed: number;
+  datetime: string;
 }

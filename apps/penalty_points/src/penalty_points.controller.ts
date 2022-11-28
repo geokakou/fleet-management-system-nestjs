@@ -7,13 +7,8 @@ import { PenaltyPointsService } from './penalty_points.service';
 export class PenaltyPointsController {
   constructor(
     private readonly penaltyPointsService: PenaltyPointsService,
-    private readonly rmqService: RmqService
+    private readonly rmqService: RmqService,
   ) {}
-
-  @Get()
-  getHello(): string {
-    return this.penaltyPointsService.getHello();
-  }
 
   @EventPattern('trip_status')
   async handleTripStatus(@Payload() data: any, @Ctx() context: RmqContext) {
