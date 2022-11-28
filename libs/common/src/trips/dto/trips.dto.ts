@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsBoolean, IsDate } from 'class-validator';
+import { IsString, IsNotEmpty, IsBoolean } from 'class-validator';
 export class CreateTripDTO {
   @IsString()
   @IsNotEmpty()
@@ -11,8 +11,4 @@ export class CreateTripDTO {
   @IsBoolean()
   @IsNotEmpty()
   isActive;
-
-  @IsDate()
-  @IsNotEmpty()
-  date: Date;
 }

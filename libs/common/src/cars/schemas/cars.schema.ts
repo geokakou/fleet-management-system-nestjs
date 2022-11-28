@@ -6,7 +6,7 @@ export type CarDocument = Car & Document;
 @Schema()
 export class Car {
   @Prop()
-  registrationNumber: string;
+  regNumber: string;
 
   @Prop()
   model: string;

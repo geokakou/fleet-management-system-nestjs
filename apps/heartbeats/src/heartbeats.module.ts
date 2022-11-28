@@ -17,7 +17,8 @@ import { TRIP_STATUS } from './constants';
       isGlobal: true,
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
-        PORT: Joi.number().required(),
+        RABBIT_MQ_URI: Joi.string().required(),
+        RABBIT_MQ_TRIPSTATUS_QUEUE: Joi.string().required(),
       }),
       envFilePath: './apps/heartbeats/.env',
     }),

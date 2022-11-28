@@ -12,10 +12,10 @@ export class HeartbeatsService {
     @Inject(TRIP_STATUS) private penaltyPointsClient: ClientProxy,
   ) {}
 
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron(CronExpression.EVERY_10_SECONDS)
   async generate() {
     const activeTrips = await this.tripsRepository.find({ isActive: true });
-    console.log(`There is ${activeTrips.length} active trip(s)`);
+    console.log(`${activeTrips.length} active trip(s)`);
 
     activeTrips.forEach(({ driverId, carRegNumber }) => {
       this.penaltyPointsClient.emit('trip_status', {

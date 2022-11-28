@@ -1,12 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
-import { HeartbeatsService } from './heartbeats.service';
+import { Controller } from '@nestjs/common';
 
 @Controller()
-export class HeartbeatsController {
-  constructor(private readonly heartbeatsService: HeartbeatsService) {}
-
-  @Get()
-  getHello(): string {
-    return this.heartbeatsService.getHello();
-  }
-}
+export class HeartbeatsController {}

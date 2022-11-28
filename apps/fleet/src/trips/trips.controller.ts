@@ -1,5 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { TripsService, CreateTripDTO, Trip } from '@app/common/trips';
+import { Body, Controller, Get, Post, Put } from '@nestjs/common';
+import {
+  TripsService,
+  CreateTripDTO,
+  Trip,
+  DeactivateTripDTO,
+} from '@app/common/trips';
 
 @Controller('trips')
 export class TripsController {
@@ -18,5 +23,10 @@ export class TripsController {
   @Get('active')
   async getActive(): Promise<Trip[]> {
     return this.tripsService.findActive();
+  }
+
+  @Put('deactivate')
+  async deactivateTrip(@Body() trip: DeactivateTripDTO): Promise<Trip> {
+    return this.tripsService.deactivate(trip);
   }
 }

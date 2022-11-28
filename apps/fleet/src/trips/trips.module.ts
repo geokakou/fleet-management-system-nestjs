@@ -8,6 +8,10 @@ import {
   TripsService,
 } from '@app/common/trips';
 import {
+  Car,
+  CarSchema,
+  CarsRepository,
+  CarsService,
   Driver,
   DriverSchema,
   DriversRepository,
@@ -19,9 +23,17 @@ import {
     MongooseModule.forFeature([
       { name: Trip.name, schema: TripSchema },
       { name: Driver.name, schema: DriverSchema },
+      { name: Car.name, schema: CarSchema },
     ]),
   ],
-  providers: [TripsService, TripsRepository, DriversService, DriversRepository],
+  providers: [
+    TripsService,
+    TripsRepository,
+    DriversService,
+    DriversRepository,
+    CarsService,
+    CarsRepository,
+  ],
   controllers: [TripsController],
 })
 export class TripsModule {}

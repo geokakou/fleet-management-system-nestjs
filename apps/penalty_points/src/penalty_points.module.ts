@@ -1,4 +1,3 @@
-
 import { DatabaseModule, Penalty, PenaltySchema } from '@app/common';
 import { PenaltyRepository } from '@app/common/penalty/penalty.repository';
 import { PenaltyService } from '@app/common/penalty/penalty.service';
@@ -21,9 +20,7 @@ import { PenaltyPointsService } from './penalty_points.service';
       }),
       envFilePath: './apps/penalty_points/.env',
     }),
-    MongooseModule.forFeature([
-      { name: Penalty.name, schema: PenaltySchema },
-    ]),
+    MongooseModule.forFeature([{ name: Penalty.name, schema: PenaltySchema }]),
     DatabaseModule,
     RmqModule,
   ],
