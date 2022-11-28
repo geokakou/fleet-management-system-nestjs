@@ -198,7 +198,7 @@
 					"response": []
 				},
 				{
-					"name": "Create new Trip",
+					"name": "Create new Trip (Assign Driver to Car)",
 					"request": {
 						"method": "POST",
 						"header": [],
